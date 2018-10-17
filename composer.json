@@ -1,0 +1,26 @@
+{
+    "name": "litphp/view-twig",
+    "description": "Twig integration for lit",
+    "require": {
+        "litphp/air": "^0.9@dev",
+        "litphp/lit": "^0.9@dev",
+        "twig/twig": "^2.5"
+    },
+    "license": "ISC",
+    "autoload": {
+        "psr-4": {
+            "Lit\\View\\Twig\\": ""
+        }
+    },
+    "authors": [
+        {
+            "name": "McFog Wang",
+            "email": "mcfogw@gmail.com"
+        }
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.9.x-dev"
+        }
+    }
+}
