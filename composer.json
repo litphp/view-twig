@@ -3,8 +3,8 @@
     "description": "Twig integration for lit",
     "require": {
         "litphp/air": "^0.9@dev",
-        "litphp/lit": "^0.9@dev",
-        "twig/twig": "^2.5"
+        "litphp/voltage": "^0.9@dev",
+        "twig/twig": "^2.7.0"
     },
     "license": "ISC",
     "autoload": {

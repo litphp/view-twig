@@ -5,17 +5,19 @@ declare(strict_types=1);
 namespace Lit\View\Twig;
 
 use Lit\Air\Configurator as C;
-use Lit\Core\AbstractView;
+use Lit\Voltage\AbstractView;
 use Psr\Http\Message\ResponseInterface;
+use Twig\Environment;
+use Twig\TemplateWrapper;
 
 class TwigView extends AbstractView
 {
     /**
-     * @var \Twig_TemplateWrapper
+     * @var TemplateWrapper
      */
     protected $template;
 
-    public function __construct(\Twig_TemplateWrapper $template)
+    public function __construct(TemplateWrapper $template)
     {
         $this->template = $template;
     }
@@ -23,11 +25,11 @@ class TwigView extends AbstractView
     public static function configuration($loader)
     {
         return [
-            \Twig_Environment::class => C::provideParameter([
-                C::alias(\Twig_Environment::class, 'loader'),
-                C::alias(\Twig_Environment::class, 'options'),
+            Environment::class => C::provideParameter([
+                C::alias(Environment::class, 'loader'),
+                C::alias(Environment::class, 'options'),
             ]),
-            C::join(\Twig_Environment::class, 'loader') => $loader,
+            C::join(Environment::class, 'loader') => $loader,
         ];
     }
 

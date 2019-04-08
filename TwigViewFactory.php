@@ -4,17 +4,19 @@ declare(strict_types=1);
 
 namespace Lit\View\Twig;
 
+use Twig\Environment;
+
 class TwigViewFactory
 {
     /**
-     * @var \Twig_Environment
+     * @var Environment
      */
     protected $twig;
 
     /**
-     * @param \Twig_Environment $twig
+     * @param Environment $twig
      */
-    public function __construct(\Twig_Environment $twig)
+    public function __construct(Environment $twig)
     {
         $this->twig = $twig;
     }
