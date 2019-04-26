@@ -9,23 +9,46 @@ TwigView for lit
 
 ### Usage
 
-#### Configuration
+In a standard litphp/project:
 
-Merge `TwigView::configuration` into your air configuration. This requires a loader stub for `Twig_LoaderInterface`. 
-Here's an example.
++ add dependency & install 
 
-```php
-C::instance(\Twig\Loader\FilesystemLoader::class, [
-    YOUR_TEMPLATE_ROOT
-])
+```bash
+composer require litphp/view-twig
 ```
 
-#### Action integration
++ append configuration
 
-Use `TwigViewBuilderTrait` in your action base class. then in your action
+Create a template dir in your project root, says `template`. Write your first template file `templates/index.twig`
+```twig
+Hello {{name}}!
+```
+
+Merge `TwigView::configuration` into your `configuration.php`.
+```php
+$configuration += \Lit\View\Twig\TwigView::configuration(C::instance(\Twig\Loader\FilesystemLoader::class, [
+    __DIR__ . '/templates',
+]));
+```
+
++ integration in action class
+
+In `src/BaseAction.php`, use the trait `TwigViewBuilderTrait`
+```php
+abstract class BaseAction extends BoltAbstractAction
+{
+    use \Lit\View\Twig\TwigViewBuilderTrait;
+```
+
+Change your `src/HomeAction.php` to render page use twig
 
 ```php
-return $this->twig('templatefile.twig')->render([
-    //template data
-]);
+class HomeAction extends BaseAction
+{
+    protected function main(): ResponseInterface
+    {
+        return $this->twig('index.twig')->render(['name' => 'twig']);
+    }
 ```
+
+That's all! Run your app by `php -S 127.0.0.1:3080 public/index.php`, and open <http://127.0.0.1:3080/>. You should see greetings from twig template "Hello twig!"
