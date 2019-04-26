@@ -9,7 +9,7 @@ TwigView for lit
 
 ### Usage
 
-In a standard litphp/project:
+In a standard [litphp/project](https://github.com/litphp/project):
 
 + add dependency & install 
 
