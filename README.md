@@ -15,7 +15,7 @@ Merge `TwigView::configuration` into your air configuration. This requires a loa
 Here's an example.
 
 ```php
-C::instance(\Twig_Loader_Filesystem::class, [
+C::instance(\Twig\Loader\FilesystemLoader::class, [
     YOUR_TEMPLATE_ROOT
 ])
 ```
